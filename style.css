@@ -47,42 +47,60 @@ h1, h2 {
 .hero {
   position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  padding-bottom: 10%;
-  overflow: hidden;
-  background: url('images/photo1.jpg') center center / cover no-repeat;
+  padding: 60px 5%;
   background-color: #0c0812;
-  animation: zoomInHero 14s ease-in-out infinite alternate;
+  overflow: hidden;
 }
 
-.hero .bg-img {
-  display: none; /* Disable <img> tag di hero */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.75));
-  z-index: 1;
-}
-
-.hero .text {
-  position: relative;
-  z-index: 2;
+.hero-text {
+  flex: 1 1 500px;
   color: #ffe6f9;
-  text-align: center;
-  animation: fadeUp 2s ease;
-  padding: 0 20px;
+  animation: fadeUp 1.8s ease;
 }
 
-/* Zoom-in halus biar cinematic tapi nggak crop */
-@keyframes zoomInHero {
-  from { background-size: 100%; }
-  to { background-size: 108%; }
+.hero-text h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  color: #f7baff;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  color: #f8e8ff;
+}
+
+.hero-img {
+  flex: 1 1 500px;
+  display: flex;
+  justify-content: center;
+  animation: fadeInText 2.5s ease;
+}
+
+.hero-img img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+  transition: transform 2s ease;
+  object-fit: cover;
+}
+
+.hero-img img:hover {
+  transform: scale(1.05);
 }
 
 /* ========================= */
@@ -176,20 +194,20 @@ h1, h2 {
 /*        RESPONSIVE FIX     */
 /* ========================= */
 @media (max-width: 768px) {
-  .section-img {
-    width: 100%;
-    max-width: 320px;
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
   }
-  .text p {
+
+  .hero-img img {
+    max-width: 350px;
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+  }
+
+  .hero-text p {
     font-size: 15px;
-  }
-  h1, h2 {
-    font-size: 24px;
-  }
-  .hero {
-    background: url('images/photo1.jpg') center center / contain no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding-bottom: 20%;
   }
 }
