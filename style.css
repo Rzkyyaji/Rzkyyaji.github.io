@@ -46,6 +46,7 @@ h1, h2 {
   position: relative;
   justify-content: flex-end;
   padding-bottom: 10%;
+  overflow: hidden;
 }
 
 .hero .bg-img {
@@ -54,6 +55,7 @@ h1, h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   filter: brightness(0.6);
   z-index: 1;
   animation: zoomIn 12s ease-in-out infinite alternate;
@@ -85,6 +87,7 @@ h1, h2 {
 .section-img {
   width: 90%;
   max-width: 400px;
+  height: auto;
   border-radius: 20px;
   filter: brightness(0.9);
   margin-bottom: 30px;
@@ -92,6 +95,7 @@ h1, h2 {
   transform: translateY(40px);
   transition: opacity 1.2s ease, transform 1.2s ease;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  object-fit: contain;
 }
 
 .fade-in.visible {
@@ -112,8 +116,10 @@ h1, h2 {
 
 /* CLOSING */
 .closing {
+  position: relative;
   background: url('images/photo4.jpg') center/cover no-repeat;
   color: #fff;
+  overflow: hidden;
 }
 
 .closing .overlay {
@@ -129,6 +135,18 @@ h1, h2 {
   color: #f4d7ff;
 }
 
+/* CONFETTI EFFECT */
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ANIMATIONS */
 @keyframes fadeInText {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -140,8 +158,8 @@ h1, h2 {
 }
 
 @keyframes zoomIn {
-  from { transform: scale(1.05); }
-  to { transform: scale(1.12); }
+  from { transform: scale(1.02); }
+  to { transform: scale(1.06); }
 }
 
 /* Fade sections on load */
@@ -153,13 +171,35 @@ h1, h2 {
   opacity: 1;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE FIXES */
 @media (max-width: 768px) {
-  .section-img {
-    width: 100%;
-    max-width: 320px;
+  section {
+    padding: 60px 20px;
   }
+
+  .hero {
+    min-height: 100vh;
+    padding-bottom: 20%;
+  }
+
+  .hero .bg-img {
+    object-fit: contain;
+    height: auto;
+  }
+
+  .section-img {
+    width: 95%;
+    max-width: 320px;
+    height: auto;
+    object-fit: contain;
+  }
+
   .text p {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  h1, h2 {
+    font-size: 24px;
   }
 }
