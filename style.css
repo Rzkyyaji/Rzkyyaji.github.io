@@ -55,7 +55,7 @@ h1, h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 15px;
   flex-wrap: wrap;
   max-width: 900px;
 }
@@ -86,9 +86,9 @@ h1, h2 {
 
 .section-img {
   aspect-ratio: 3 / 4;
-  border-radius: 20px;
+  border-radius: 10px;
   filter: brightness(0.9);
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 1.2s ease, transform 1.2s ease;
