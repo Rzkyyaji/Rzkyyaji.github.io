@@ -41,41 +41,53 @@ h1, h2 {
   color: #f7baff;
 }
 
-/* HERO SECTION */
+/* ========================= */
+/*        HERO SECTION FIX   */
+/* ========================= */
 .hero {
   position: relative;
+  display: flex;
+  flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
+  min-height: 100vh;
   padding-bottom: 10%;
   overflow: hidden;
+  background: url('images/photo1.jpg') center center / cover no-repeat;
+  background-color: #0c0812;
+  animation: zoomInHero 14s ease-in-out infinite alternate;
 }
 
 .hero .bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: brightness(0.6);
-  z-index: 1;
-  animation: zoomIn 12s ease-in-out infinite alternate;
+  display: none; /* Disable <img> tag di hero */
 }
 
-.hero .overlay {
+.hero::before {
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.75));
   z-index: 1;
 }
 
 .hero .text {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   color: #ffe6f9;
+  text-align: center;
   animation: fadeUp 2s ease;
+  padding: 0 20px;
 }
 
-/* SCROLL SECTIONS */
+/* Zoom-in halus biar cinematic tapi nggak crop */
+@keyframes zoomInHero {
+  from { background-size: 100%; }
+  to { background-size: 108%; }
+}
+
+/* ========================= */
+/*        SCROLL SECTIONS    */
+/* ========================= */
 .scroll-section {
   background: linear-gradient(180deg, #120a1d, #0c0812);
 }
@@ -87,7 +99,6 @@ h1, h2 {
 .section-img {
   width: 90%;
   max-width: 400px;
-  height: auto;
   border-radius: 20px;
   filter: brightness(0.9);
   margin-bottom: 30px;
@@ -95,7 +106,6 @@ h1, h2 {
   transform: translateY(40px);
   transition: opacity 1.2s ease, transform 1.2s ease;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  object-fit: contain;
 }
 
 .fade-in.visible {
@@ -114,12 +124,12 @@ h1, h2 {
   transform: translateY(0);
 }
 
-/* CLOSING */
+/* ========================= */
+/*        CLOSING SECTION    */
+/* ========================= */
 .closing {
-  position: relative;
   background: url('images/photo4.jpg') center/cover no-repeat;
   color: #fff;
-  overflow: hidden;
 }
 
 .closing .overlay {
@@ -135,18 +145,9 @@ h1, h2 {
   color: #f4d7ff;
 }
 
-/* CONFETTI EFFECT */
-.confetti {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* ANIMATIONS */
+/* ========================= */
+/*        ANIMATIONS         */
+/* ========================= */
 @keyframes fadeInText {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -158,8 +159,8 @@ h1, h2 {
 }
 
 @keyframes zoomIn {
-  from { transform: scale(1.02); }
-  to { transform: scale(1.06); }
+  from { transform: scale(1.05); }
+  to { transform: scale(1.12); }
 }
 
 /* Fade sections on load */
@@ -171,35 +172,24 @@ h1, h2 {
   opacity: 1;
 }
 
-/* RESPONSIVE FIXES */
+/* ========================= */
+/*        RESPONSIVE FIX     */
+/* ========================= */
 @media (max-width: 768px) {
-  section {
-    padding: 60px 20px;
-  }
-
-  .hero {
-    min-height: 100vh;
-    padding-bottom: 20%;
-  }
-
-  .hero .bg-img {
-    object-fit: contain;
-    height: auto;
-  }
-
   .section-img {
-    width: 95%;
+    width: 100%;
     max-width: 320px;
-    height: auto;
-    object-fit: contain;
   }
-
   .text p {
     font-size: 15px;
-    line-height: 1.5;
   }
-
   h1, h2 {
     font-size: 24px;
+  }
+  .hero {
+    background: url('images/photo1.jpg') center center / contain no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 20%;
   }
 }
