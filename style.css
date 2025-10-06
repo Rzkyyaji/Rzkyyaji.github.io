@@ -11,14 +11,14 @@ body {
   overflow-x: hidden;
 }
 
-/* Shared styles */
+/* Shared section style */
 section {
   position: relative;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   text-align: center;
   padding: 40px 20px;
 }
@@ -41,21 +41,38 @@ h1, h2 {
   color: #f7baff;
 }
 
-/* HERO SECTION */
+/* HERO SECTION (Reworked) */
 .hero {
-  flex-direction: column;
-  gap: 20px;
-  background: linear-gradient(180deg, #120a1d, #0c0812);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #0c0812, #1a0d24);
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  max-width: 900px;
 }
 
 .hero-img {
-  width: 90%;
-  max-width: 500px;
-  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   border-radius: 20px;
   object-fit: cover;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  margin-top: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+}
+
+.hero .text {
+  flex: 1 1 300px;
+  color: #ffe6f9;
+  text-align: left;
 }
 
 /* SCROLL SECTIONS */
@@ -69,15 +86,15 @@ h1, h2 {
 
 .section-img {
   width: 90%;
-  max-width: 500px;
-  aspect-ratio: 16 / 9;
+  max-width: 400px;
   border-radius: 20px;
   filter: brightness(0.9);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 1.2s ease, transform 1.2s ease;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  object-fit: cover;
 }
 
 .fade-in.visible {
@@ -96,11 +113,10 @@ h1, h2 {
   transform: translateY(0);
 }
 
-/* CLOSING */
+/* CLOSING SECTION */
 .closing {
   background: url('images/photo4.jpg') center/cover no-repeat;
   color: #fff;
-  position: relative;
 }
 
 .closing .overlay {
@@ -116,12 +132,18 @@ h1, h2 {
   color: #f4d7ff;
 }
 
+/* Animations */
 @keyframes fadeInText {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Fade sections on load */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade section animation */
 .fade-section {
   opacity: 0;
   transition: opacity 2s ease;
@@ -132,14 +154,18 @@ h1, h2 {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero {
-    padding: 60px 20px;
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .hero-img, .section-img {
+  .hero .text {
+    text-align: center;
+  }
+
+  .section-img {
     width: 100%;
-    max-width: 380px;
-    aspect-ratio: 16 / 9;
+    max-width: 320px;
   }
 
   .text p {
