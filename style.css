@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0c0812;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Shared styles */
+section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.text {
+  z-index: 2;
+  max-width: 800px;
+  animation: fadeInText 2s ease;
+}
+
+.text p {
+  font-size: clamp(16px, 2.5vw, 22px);
+  line-height: 1.6;
+  color: #f7e8ff;
+  margin-top: 10px;
+}
+
+h1, h2 {
+  font-size: clamp(26px, 5vw, 42px);
+  color: #f7baff;
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  justify-content: flex-end;
+  padding-bottom: 10%;
+}
+
+.hero .bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+  z-index: 1;
+  animation: zoomIn 12s ease-in-out infinite alternate;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.hero .text {
+  position: relative;
+  z-index: 3;
+  color: #ffe6f9;
+  animation: fadeUp 2s ease;
+}
+
+/* SCROLL SECTIONS */
+.scroll-section {
+  background: linear-gradient(180deg, #120a1d, #0c0812);
+}
+
+.scroll-section.alt {
+  background: linear-gradient(180deg, #0c0812, #1a0d24);
+}
+
+.section-img {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  filter: brightness(0.9);
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-delay {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.5s ease 0.3s, transform 1.5s ease 0.3s;
+}
+
+.fade-in-delay.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CLOSING */
+.closing {
+  background: url('images/photo4.jpg') center/cover no-repeat;
+  color: #fff;
+}
+
+.closing .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.closing .text {
+  z-index: 2;
+  animation: fadeInText 3s ease;
+  color: #f4d7ff;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.12); }
+}
+
+/* Fade sections on load */
+.fade-section {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.fade-section.visible {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .section-img {
+    width: 100%;
+    max-width: 320px;
+  }
+  .text p {
+    font-size: 16px;
+  }
+}
