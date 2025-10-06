@@ -5,178 +5,84 @@
 }
 
 body {
-  background-color: #0c0812;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
-  overflow-x: hidden;
-}
-
-/* ==== GENERAL SECTION ==== */
-section {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0c0b14;
+  color: #f1f1f1;
   text-align: center;
-  padding: 40px 20px;
-}
-
-.text {
-  z-index: 2;
-  max-width: 800px;
-  animation: fadeInText 2s ease;
-}
-
-.text p {
-  font-size: clamp(16px, 2.5vw, 22px);
+  overflow-x: hidden;
   line-height: 1.6;
-  color: #f7e8ff;
-  margin-top: 10px;
 }
 
-h1, h2 {
-  font-size: clamp(26px, 5vw, 42px);
-  color: #f7baff;
+h1 {
+  color: #ff9dee;
+  font-size: 1.8em;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
-/* ==== HERO SECTION (PORTRAIT STYLE) ==== */
-.hero {
-  background-color: #0c0812;
+p {
+  font-size: 1em;
+  color: #ccc;
+  margin: 0 20px 30px 20px;
+}
+
+section {
+  padding: 10px 0;
+}
+
+.photo-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 60px 5%;
-  min-height: 100vh;
+  align-items: center;
+  margin: 0 auto 20px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  aspect-ratio: 16 / 9; /* biar landscape proporsional */
+}
+
+footer {
+  margin: 50px 0 80px 0;
+  color: #ffb6f9;
+  font-size: 1em;
+}
+
+/* confetti */
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   overflow: hidden;
 }
 
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  max-width: 700px;
-  width: 100%;
-  text-align: center;
-}
-
-.hero-img {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-img img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 25px;
-  object-fit: cover;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
-  animation: fadeInText 2s ease;
-}
-
-.hero-text {
-  color: #ffe6f9;
-  animation: fadeUp 1.8s ease;
-}
-
-.hero-text h1 {
-  font-size: clamp(32px, 6vw, 54px);
-  color: #f7baff;
-  margin-bottom: 15px;
-}
-
-.hero-text p {
-  font-size: clamp(16px, 2.2vw, 20px);
-  line-height: 1.6;
-  color: #f8e8ff;
-}
-
-/* ==== SCROLL SECTIONS ==== */
-.scroll-section {
-  background: linear-gradient(180deg, #120a1d, #0c0812);
-}
-
-.scroll-section.alt {
-  background: linear-gradient(180deg, #0c0812, #1a0d24);
-}
-
-.section-img {
-  width: 90%;
-  max-width: 400px;
-  border-radius: 20px;
-  filter: brightness(0.9);
-  margin-bottom: 30px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-in-delay {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.5s ease 0.3s, transform 1.5s ease 0.3s;
-}
-
-.fade-in-delay.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ==== CLOSING SECTION ==== */
-.closing {
-  background: url('photo4.jpg') center/cover no-repeat;
-  color: #fff;
-  position: relative;
-}
-
-.closing .overlay {
+.confetti-piece {
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 1;
+  width: 8px;
+  height: 8px;
+  background: #ff8ae2;
+  opacity: 0.8;
+  animation: fall 3s linear infinite;
 }
 
-.closing .text {
-  z-index: 2;
-  animation: fadeInText 3s ease;
-  color: #f4d7ff;
-  position: relative;
-}
-
-/* ==== ANIMATIONS ==== */
-@keyframes fadeInText {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ==== RESPONSIVE ==== */
-@media (max-width: 768px) {
-  .hero-img img {
-    max-width: 300px;
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
   }
-
-  .hero-text h1 {
-    font-size: 28px;
-  }
-
-  .hero-text p {
-    font-size: 15px;
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
   }
 }

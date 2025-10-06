@@ -3,54 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Little Message for You 🎁</title>
+  <title>A Little Message for You 💌</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-  <audio id="bg-music" src="wave to earth - love.mp3" preload="auto" loop></audio>
 
-  <!-- HERO SECTION (PORTRAIT MODE) -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-img">
-        <img src="photo1.jpg" alt="Hero Image">
-      </div>
-      <div class="hero-text">
-        <h1>A Little Message for You 💌</h1>
-        <p>Selamatt ulang taunn brokk, gweh ada beberapa ucapan buat luhk brok, scroll aja yakk 🥳🥳</p>
-      </div>
+  <h1>A Little Message for You 💌</h1>
+  <p>Selamatt ulang taunn brokk, gweh ada beberapa ucapan buat luhk brok, scroll aja yakk 🥳🥳</p>
+
+  <section>
+    <div class="photo-container">
+      <img src="photo1.jpg" alt="Foto 1">
     </div>
+    <p>
+      Happy birthday yaa semoga panjang umur, sehat selalu, murah rezeki, jangan lupa make a wish yaahh. 
+      Semoga di kabulkan semua do'a semoga bisa jadi lebih baik tahun ini 🙌🏼. 
+      Semoga juga tahun ini jadi tahun-tahun terbaik buat luhk yakk 🙆🏻‍♀, 
+      soalnya makin dewasa makin banyak pikiran wok (apalagi laprak 😰), 
+      tapi gweh yakin sama bro! baik-baik yakk di umur ke 20 enihh. 
+      Kalau butuh temen main ato keluar boleh ajak watashii yakkk, 
+      watashi selalu ada buat luhk bro!!! (sorry yeahh if I act too close hehe) 🥳🎁
+    </p>
   </section>
 
-  <!-- SECTION 2 -->
-  <section class="scroll-section">
-    <img src="photo2.jpg" alt="foto 2" class="section-img fade-in">
-    <div class="text fade-in-delay">
-      <p>Happy birthday yaa semoga panjang umur, sehat selalu, murah rezeki, jangan lupa make a wish yaahh. 
-      Semoga di kabulkan semua do'a semoga bisa jadi lebih baik tahun ini 🙌🏼, semoga juga tahun ini, tahun-tahun terbaik buat luhk yakk 🙆🏻‍♀, 
-      soalnya makin dewasa makin banyak pikiran wok (apalagi laprak 😰), tapi gweh yakin sama bro! baik-baik yakk di umur ke 20 enihh. 
-      Kalau butuh temen main ato keluar boleh ajak watashii yakkk, watashi selalu ada buat luhk bro!!! (sorry yeahh if I act too close hehe) 🥳🎁</p>
+  <section>
+    <div class="photo-container">
+      <img src="foto2.jpg" alt="Foto 2">
     </div>
+    <p>I am wishing the most incredible birthday today to my amazing bro Ness 🥳</p>
   </section>
 
-  <!-- SECTION 3 -->
-  <section class="scroll-section alt">
-    <img src="photo3.jpg" alt="foto 3" class="section-img fade-in">
-    <div class="text fade-in-delay">
-      <p>I'm wishing the most incredible birthday today to my amazing bro ness 🥳</p>
-    </div>
-  </section>
+  <footer>
+    Semua doa baik buat Ganess 💜 <br>
+    Happy birthday to the person who makes even the most ordinary days extraordinary 🎁🥳
+  </footer>
 
-  <!-- SECTION 4 -->
-  <section class="closing fade-section">
-    <div class="overlay"></div>
-    <div class="text">
-      <h2>Semua doa baik buat ganess 🎂</h2>
-      <p>Happy birthday to the person who makes even the most ordinary days extraordinary 🥳🎁</p>
-    </div>
-  </section>
+  <div class="confetti"></div>
 
-  <script src="script.js"></script>
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // delay musik biar smooth
+    const music = document.getElementById('bgMusic');
+    setTimeout(() => {
+      music.play().catch(() => console.log("Autoplay diblokir, butuh interaction"));
+    }, 2000);
+
+    // confetti anim
+    const confettiContainer = document.querySelector('.confetti');
+    const colors = ['#ff9dee', '#fce38a', '#f38181', '#95e1d3', '#a8e6cf'];
+
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti-piece');
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.animationDelay = `${Math.random() * 3}s`;
+      confetti.style.width = `${6 + Math.random() * 4}px`;
+      confetti.style.height = confetti.style.width;
+      confettiContainer.appendChild(confetti);
+    }
+  </script>
+
 </body>
 </html>
